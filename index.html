@@ -245,10 +245,22 @@
         </div>
     </div>
 
+    <div class="overlay">
+        <div class="popup">
+            <h3 class="popup-title">my portfolio has moved!</h3>
+            <p class="popup-text">You will be redirected in <strong>5 seconds</strong>.</p>
+            <p class="popup-text">If not, click <a class="popup-link" href="https://manoj-thilakarathna-portfolio.vercel.app/">here</a>.</p>
+        </div>
+    </div>
+
     <a href="#" class="to-top" id="to-top"><i class="fa-solid fa-arrow-up"></i></a>
 
 
     <script>
+
+        setTimeout(function() {
+            window.location.href = "https://manoj-thilakarathna-portfolio.vercel.app/";
+        }, 5000); // Redirect after 5 seconds
 
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-contents");

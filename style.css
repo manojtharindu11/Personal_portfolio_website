@@ -479,6 +479,46 @@ form .btn2 {
     margin-left: 5px;
 }
 
+.overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.popup {
+    background: rgb(241, 240, 240);
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 100%;
+}
+
+.popup-title {
+    color: #333;
+}
+
+.popup-text {
+    font-size: 18px;
+    color: #555;
+}
+
+.popup-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.popup-link:hover {
+    text-decoration: underline;
+}
+
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -580,6 +620,10 @@ nav .fas {
     .copy-right {
         font-size: 14px;
     }
+    
+    .work {
+        width: 80vw;
+    }
 }
 
 
@@ -636,5 +680,8 @@ nav .fas {
 @media only screen and (max-width: 600px) {
     .hidden {
         transition: none;
+    }
+    .overlay {
+        margin: 10;
     }
 }
