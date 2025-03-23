@@ -1,30 +1,35 @@
-# This is an essential workflow to help you get started with Actions
+name: Deploy to GitHub Pages
 
-name: CI
-
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    tags: "v*"
-
-  # Allows you to run this workflow manually from the Actions tab
+    tags:
+      - "v*"
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-jobs:
-  # This workflow contains a single job called "build"
-  build:
-    # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+permissions:
+  pages: write
+  id-token: write
 
-      # Runs a single command using the runner's shell
-      - name: Deploy on Github pages
-        uses: JamesIves/github-pages-deploy-action@v4
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Optional: If you're using a build process (Vite, React, etc.), add a build step
+      - name: Build (Optional)
+        run: |
+          echo "No build step needed for plain HTML/CSS/JS"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages  # Deploy to the gh-pages branch
-          folder: .         # Deploy everything in the repository
+          path: .  # Change this if you're deploying a specific folder
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
