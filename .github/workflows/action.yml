@@ -1,0 +1,35 @@
+name: deploy-to-gitHub-pages
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+permissions:
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Optional: If you're using a build process (Vite, React, etc.), add a build step
+      - name: Build (Optional)
+        run: |
+          echo "No build step needed for plain HTML/CSS/JS"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .  # Change this if you're deploying a specific folder
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
